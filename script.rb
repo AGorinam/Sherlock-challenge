@@ -3,7 +3,7 @@ file = File.open("book.txt")
 file_data = file.read.downcase
 
 # Removing symbols (Cleaning TXT) & adding words into an array to operate
-file_data.gsub!(/[^0-9A-Za-z]/, ' ')
+file_data.gsub!(/[^a-z]/, ' ')
 array = file_data.split(" ")
 
 # Creating a hash to store the different words and number of times it is repeated.
@@ -14,7 +14,7 @@ end
 
 # Times each of the words is repeated
 puts 'Times each word is repeated'
-# puts words_hash
+puts words_hash
 # Number of different words
 puts "#{words_hash.values.count} different words"
 
@@ -22,6 +22,8 @@ puts "#{words_hash.values.count} different words"
 
 # Words to understand 80% of the words written in the book
 num_words = (words_hash.values.sum * 0.8).round()
+puts "#{words_hash.values.sum} total words"
+puts "#{num_words} words (80% of total)"
 # Counter to acumulate the words till we reach the desired number and Hash to store the words
 count = 0
 new_hash = Hash.new
