@@ -2,11 +2,8 @@
 file = File.open("book.txt")
 file_data = file.read.downcase
 
-# Removing symbols (Cleaning TXT) ---> Needs refactor
-removed_symbols = ['I.','II.','III.','IV.','V.','VI.','VII.','VIII.','IX.','X.','XI.','XII.','.',',',':','?',';','!','(',')','_','/','$','1','2','3','4','5','6','7','8','9','´','"','-']
-removed_symbols.each do |symbol|
-  file_data = file_data.tr(symbol,' ')
-end
+# Removing symbols (Cleaning TXT) & adding words into an array to operate
+file_data.gsub!(/[^0-9A-Za-z]/, ' ')
 array = file_data.split(" ")
 
 # Creating a hash to store the different words and number of times it is repeated.
@@ -17,7 +14,7 @@ end
 
 # Times each of the words is repeated
 puts 'Times each word is repeated'
-puts words_hash
+# puts words_hash
 # Number of different words
 puts "#{words_hash.values.count} different words"
 
